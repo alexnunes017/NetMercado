@@ -22,13 +22,13 @@ public class Produto extends GenericDomain {
 	private Double precoProduto;
 
 	@Column(length = 5, nullable = false)
-	private Long estoqueMinimo;
+	private Integer estoqueMinimo;
 
 	@Column(length = 5, nullable = false)
-	private Long estoqueAtual;
+	private Integer estoqueAtual;
 
 	@Column(length = 5, nullable = false)
-	private Long estoqueMaximo;
+	private Integer estoqueMaximo;
 
 	@Enumerated(EnumType.STRING)
 	private TipoProduto tipoProduto;
@@ -37,8 +37,8 @@ public class Produto extends GenericDomain {
 		super();
 	}
 
-	public Produto(String nomeProduto, Double precoProduto, Long estoqueMinimo, Long estoqueAtual, Long estoqueMaximo,
-			TipoProduto tipoProduto) {
+	public Produto(String nomeProduto, Double precoProduto, Integer estoqueMinimo, Integer estoqueAtual,
+			Integer estoqueMaximo, TipoProduto tipoProduto) {
 		super();
 		this.nomeProduto = nomeProduto;
 		this.precoProduto = precoProduto;
@@ -64,28 +64,36 @@ public class Produto extends GenericDomain {
 		this.precoProduto = precoProduto;
 	}
 
-	public Long getEstoqueMinimo() {
+	public Integer getEstoqueMinimo() {
 		return estoqueMinimo;
 	}
 
-	public void setEstoqueMinimo(Long estoqueMinimo) {
+	public void setEstoqueMinimo(Integer estoqueMinimo) {
 		this.estoqueMinimo = estoqueMinimo;
 	}
 
-	public Long getEstoqueAtual() {
+	public Integer getEstoqueAtual() {
 		return estoqueAtual;
 	}
 
-	public void setEstoqueAtual(Long estoqueAtual) {
+	public void setEstoqueAtual(Integer estoqueAtual) {
 		this.estoqueAtual = estoqueAtual;
 	}
 
-	public Long getEstoqueMaximo() {
+	public Integer getEstoqueMaximo() {
 		return estoqueMaximo;
 	}
 
-	public void setEstoqueMaximo(Long estoqueMaximo) {
+	public void setEstoqueMaximo(Integer estoqueMaximo) {
 		this.estoqueMaximo = estoqueMaximo;
+	}
+
+	public TipoProduto getTipoProduto() {
+		return tipoProduto;
+	}
+
+	public void setTipoProduto(TipoProduto tipoProduto) {
+		this.tipoProduto = tipoProduto;
 	}
 
 }
