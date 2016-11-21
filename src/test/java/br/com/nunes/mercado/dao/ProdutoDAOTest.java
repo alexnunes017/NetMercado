@@ -1,5 +1,7 @@
 package br.com.nunes.mercado.dao;
 
+import java.math.BigDecimal;
+
 import org.junit.Test;
 
 import br.com.nunes.mercado.domain.Produto;
@@ -12,7 +14,9 @@ public class ProdutoDAOTest {
 
 	@Test
 	public void salvar() {
-		produto = new Produto("Suco de Laranja Integral", 600, 2, 1, 5, TipoProduto.ORIGINAL);
+		Short s = new Short((short) 1);
+		BigDecimal decimal = new BigDecimal(12);
+		produto = new Produto("Suco de Laranja Integral", decimal, s, s, s, TipoProduto.ORIGINAL);
 		produtoDAO.salvar(produto);
 	}
 

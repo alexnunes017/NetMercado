@@ -11,26 +11,16 @@
 	<ui:define name="conteudo">
 		<h:form id="formListagem">
 			<p:panel header="Tela de Produtos">
-				<p:toolbar>
-					<p:toolbarGroup>
-						<p:button value="Novo"></p:button>
-						<p:button value="Salvar"></p:button>
-
-					</p:toolbarGroup>
-					<p:toolbarGroup align="right">
-						<p:button value="Pesquisa">
-						</p:button>
-					</p:toolbarGroup>
-				</p:toolbar>
 
 
-				<p:panelGrid columns="2" cellpadding="5">
+
+				<p:panelGrid columns="2" cellpadding="5"
+					columnClasses="rotulo,classes">
 					<p:outputLabel for="descricao" value="Descrição:" />
 					<p:inputText id="descricao" size="20" />
 
 					<p:outputLabel for="preco" value="Preço:" />
-					<p:inputText id="preco" maxlength="7" size="10"
-						value="#{produtoBean.produto.preco}" required="true">
+					<p:inputText id="preco" maxlength="7" size="10" required="true">
 						<f:validateDoubleRange minimum="0.01" maximum="9999.99" />
 						<f:convertNumber locale="pt_BR" minFractionDigits="2" />
 					</p:inputText>
@@ -61,6 +51,18 @@
 
 
 				</p:panelGrid>
+				<p:toolbar>
+					<p:toolbarGroup>
+						<p:button value="Novo" onclick="#"></p:button>
+						<p:commandButton value="Salvar"
+							actionListener="#{produtoBean.salvar()}" />
+
+					</p:toolbarGroup>
+					<p:toolbarGroup align="right">
+						<p:button value="Pesquisa">
+						</p:button>
+					</p:toolbarGroup>
+				</p:toolbar>
 
 				<p:panelGrid columns="2" cellpadding="5">
 
