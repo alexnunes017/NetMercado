@@ -24,7 +24,8 @@
 				</p:toolbar>
 
 
-				<p:panelGrid columns="2" cellpadding="5" columnClasses="rotulo,classes">
+				<p:panelGrid columns="2" cellpadding="5"
+					columnClasses="rotulo,classes">
 					<p:outputLabel for="cliente" value="Nome do Cliente:" />
 					<p:inputText id="cliente" size="20" />
 				</p:panelGrid>
@@ -34,7 +35,36 @@
 
 
 					<p:dataTable reflow="true" rows="5" paginator="true"
-						paginatorPosition="top" emptyMessage="Nenhum Dado Existente"></p:dataTable>
+						paginatorPosition="top" emptyMessage="Nenhum Dado Existente">
+						<f:facet name="header">
+						Lista de Vendas
+						</f:facet>
+
+						<p:column>
+							<h:outputText value="#{produto.codigo}" />
+						</p:column>
+						<p:column>
+							<h:outputText value="#{produto.nomeProduto}" />
+						</p:column>
+
+						<p:column>
+							<h:outputText value="#{produto.precoProduto}" />
+						</p:column>
+
+						<p:column>
+							<h:outputText value="#{produto.tipoProduto}" />
+						</p:column>
+
+						<p:column>
+							<h:outputText value="#{produto.estoqueMinimo}" />
+						</p:column>
+						<p:column>
+							<h:outputText value="#{produto.estoqueAtual}" />
+						</p:column>
+						<p:column>
+							<h:outputText value="#{produto.estoqueMaximo}" />
+						</p:column>
+					</p:dataTable>
 
 				</p:panelGrid>
 			</p:panel>

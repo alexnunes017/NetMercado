@@ -8,12 +8,24 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	template="/templates/modelo.xhtml">
 
+	<f:metadata>
+		<f:viewAction action="#{produtoBean.listar}" />
+
+	</f:metadata>
 	<ui:define name="conteudo">
 		<h:form id="formListagem">
 			<p:panel header="Tela de Produtos">
 
 
+				<p:toolbar>
+					<p:toolbarGroup>
+						<p:button value="Novo" onclick="#"></p:button>
+						<p:commandButton value="Salvar"
+							actionListener="#{produtoBean.salvar()}" />
 
+					</p:toolbarGroup>
+
+				</p:toolbar>
 				<p:panelGrid columns="2" cellpadding="5"
 					columnClasses="rotulo,classes">
 					<p:outputLabel for="descricao" value="Descrição:" />
@@ -51,25 +63,46 @@
 
 
 				</p:panelGrid>
-				<p:toolbar>
-					<p:toolbarGroup>
-						<p:button value="Novo" onclick="#"></p:button>
-						<p:commandButton value="Salvar"
-							actionListener="#{produtoBean.salvar()}" />
 
-					</p:toolbarGroup>
-					<p:toolbarGroup align="right">
-						<p:button value="Pesquisa">
-						</p:button>
-					</p:toolbarGroup>
-				</p:toolbar>
 
 				<p:panelGrid columns="2" cellpadding="5">
 
 
 
-					<p:dataTable reflow="true" rows="5" paginator="true"
-						paginatorPosition="top" emptyMessage="Nenhum Dado Existente"></p:dataTable>
+					<p:dataTable id="tabela" reflow="true" rows="5" paginator="true"
+						paginatorPosition="top" emptyMessage="Nenhum Dado Existente"
+						value="#{produtoBean.produtos}" var="produto" styleClass="tabela">
+						<f:facet name="header">
+						Lista de Produtos
+						</f:facet>
+
+						<p:column>
+							<h:outputText value="#{produto.codigo}" />
+						</p:column>
+						<p:column>
+							<h:outputText value="#{produto.nomeProduto}" />
+						</p:column>
+
+						<p:column>
+							<h:outputText value="#{produto.precoProduto}" />
+						</p:column>
+
+						<p:column>
+							<h:outputText value="#{produto.tipoProduto}" />
+						</p:column>
+
+						<p:column>
+							<h:outputText value="#{produto.estoqueMinimo}" />
+						</p:column>
+						<p:column>
+							<h:outputText value="#{produto.estoqueAtual}" />
+						</p:column>
+						<p:column>
+							<h:outputText value="#{produto.estoqueMaximo}" />
+						</p:column>
+
+
+					</p:dataTable>
 
 				</p:panelGrid>
 			</p:panel>
