@@ -12,7 +12,7 @@ public class ProdutoDAOTest {
 
 	@Test
 	public void salvar() {
-		produto = new Produto("Suco de Laranja Integral", 6.00, 2, 100, 50, TipoProduto.ORIGINAL);
+		produto = new Produto("Suco de Laranja Integral", 600, 2, 1, 5, TipoProduto.ORIGINAL);
 		produtoDAO.salvar(produto);
 	}
 

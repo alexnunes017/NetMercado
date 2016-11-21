@@ -44,8 +44,10 @@
 }
 
 .menufont {
-	font-family: Calibri Light;
+	font-family: Ubuntu;
 	font-size: 10px;
+	margin: 5px;
+	padding: 5px;
 }
 
 .tabelafont {
@@ -54,7 +56,6 @@
 	padding: 0px;
 	font-size: 10px;
 }
-
 
 .inicialfont {
 	font-family: Calibri Light;
@@ -114,6 +115,6 @@
 	width: 50%;
 }
 
-.div{
+.div {
 	height: 660px;
 }

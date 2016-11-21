@@ -19,10 +19,24 @@
 	<p:messages id="mensagem" />
 
 	<div id="geral"></div>
+	<div id="topo" class="divTopo">
+		<p:link>
+			<p:graphicImage library="imagens" name="banner.jpeg"
+				styleClass="imagemCentralizada" />
+		</p:link>
+	</div>
 
 	<div id="cabecalho" class="divCabecalho">
 
 		<h:form id="formMenu">
+			<p:menubar>
+				<p:menuitem value="Loja" outcome="loja" styleClass="menufont" />
+				<p:menuitem value="Cliente" outcome="cliente" styleClass="menufont" />
+				<p:menuitem value="Vendedor" outcome="vendedor"
+					styleClass="menufont" />
+				<p:menuitem value="Produto" outcome="produto" styleClass="menufont" />
+				<p:menuitem value="Venda" outcome="venda" styleClass="menufont" />
+			</p:menubar>
 
 
 

@@ -1,5 +1,7 @@
 package br.com.nunes.mercado.domain;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -18,17 +20,17 @@ public class Produto extends GenericDomain {
 	@Column(length = 100, nullable = false)
 	private String nomeProduto;
 
-	@Column(length = 10, precision = 4, scale = 4, nullable = false)
-	private Double precoProduto;
+	@Column(nullable = false, precision = 6, scale = 2)
+	private BigDecimal precoProduto;
 
 	@Column(length = 5, nullable = false)
-	private Integer estoqueMinimo;
+	private Short estoqueMinimo;
 
 	@Column(length = 5, nullable = false)
-	private Integer estoqueAtual;
+	private Short estoqueAtual;
 
 	@Column(length = 5, nullable = false)
-	private Integer estoqueMaximo;
+	private Short estoqueMaximo;
 
 	@Enumerated(EnumType.STRING)
 	private TipoProduto tipoProduto;
@@ -37,8 +39,8 @@ public class Produto extends GenericDomain {
 		super();
 	}
 
-	public Produto(String nomeProduto, Double precoProduto, Integer estoqueMinimo, Integer estoqueAtual,
-			Integer estoqueMaximo, TipoProduto tipoProduto) {
+	public Produto(String nomeProduto, BigDecimal precoProduto, Short estoqueMinimo, Short estoqueAtual,
+			Short estoqueMaximo, TipoProduto tipoProduto) {
 		super();
 		this.nomeProduto = nomeProduto;
 		this.precoProduto = precoProduto;
@@ -56,35 +58,35 @@ public class Produto extends GenericDomain {
 		this.nomeProduto = nomeProduto;
 	}
 
-	public Double getPrecoProduto() {
+	public BigDecimal getPrecoProduto() {
 		return precoProduto;
 	}
 
-	public void setPrecoProduto(Double precoProduto) {
+	public void setPrecoProduto(BigDecimal precoProduto) {
 		this.precoProduto = precoProduto;
 	}
 
-	public Integer getEstoqueMinimo() {
+	public Short getEstoqueMinimo() {
 		return estoqueMinimo;
 	}
 
-	public void setEstoqueMinimo(Integer estoqueMinimo) {
+	public void setEstoqueMinimo(Short estoqueMinimo) {
 		this.estoqueMinimo = estoqueMinimo;
 	}
 
-	public Integer getEstoqueAtual() {
+	public Short getEstoqueAtual() {
 		return estoqueAtual;
 	}
 
-	public void setEstoqueAtual(Integer estoqueAtual) {
+	public void setEstoqueAtual(Short estoqueAtual) {
 		this.estoqueAtual = estoqueAtual;
 	}
 
-	public Integer getEstoqueMaximo() {
+	public Short getEstoqueMaximo() {
 		return estoqueMaximo;
 	}
 
-	public void setEstoqueMaximo(Integer estoqueMaximo) {
+	public void setEstoqueMaximo(Short estoqueMaximo) {
 		this.estoqueMaximo = estoqueMaximo;
 	}
 

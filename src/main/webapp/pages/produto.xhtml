@@ -10,7 +10,7 @@
 
 	<ui:define name="conteudo">
 		<h:form id="formListagem">
-			<p:panel header="Tela de Clientes">
+			<p:panel header="Tela de Produtos">
 				<p:toolbar>
 					<p:toolbarGroup>
 						<p:button value="Novo"></p:button>
@@ -25,8 +25,41 @@
 
 
 				<p:panelGrid columns="2" cellpadding="5">
-					<p:outputLabel for="cliente" value="Nome do Cliente:" />
-					<p:inputText id="cliente" size="20" />
+					<p:outputLabel for="descricao" value="Descrição:" />
+					<p:inputText id="descricao" size="20" />
+
+					<p:outputLabel for="preco" value="Preço:" />
+					<p:inputText id="preco" maxlength="7" size="10"
+						value="#{produtoBean.produto.preco}" required="true">
+						<f:validateDoubleRange minimum="0.01" maximum="9999.99" />
+						<f:convertNumber locale="pt_BR" minFractionDigits="2" />
+					</p:inputText>
+					<p:outputLabel for="estoqueMinimo" value="Estoque Mínimo:" />
+					<p:inputText id="estoqueMinimo" maxlength="5" size="10"
+						required="true">
+						<f:validateLongRange minimum="0" maximum="1000" />
+					</p:inputText>
+
+					<p:outputLabel for="estoqueAtual" value="Estoque:" />
+					<p:inputText id="estoqueAtual" maxlength="5" size="10"
+						required="true">
+						<f:validateLongRange minimum="0" maximum="1000" />
+					</p:inputText>
+
+					<p:outputLabel for="estoqueMaximo" value="Estoque Mínimo:" />
+					<p:inputText id="estoqueMaximo" maxlength="5" size="10"
+						required="true">
+						<f:validateLongRange minimum="0" maximum="1000" />
+					</p:inputText>
+
+					<p:outputLabel for="tipo" value="Tipo:" />
+					<p:selectOneMenu id="tipo">
+						<f:selectItem itemLabel="Original" itemValue="0" />
+						<f:selectItem itemLabel="Similar" itemValue="1" />
+					</p:selectOneMenu>
+
+
+
 				</p:panelGrid>
 
 				<p:panelGrid columns="2" cellpadding="5">

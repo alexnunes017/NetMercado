@@ -10,7 +10,7 @@
 
 	<ui:define name="conteudo">
 		<h:form id="formListagem">
-			<p:panel header="Tela de Clientes">
+			<p:panel header="Tela de Vendedor">
 				<p:toolbar>
 					<p:toolbarGroup>
 						<p:button value="Novo"></p:button>
@@ -25,8 +25,36 @@
 
 
 				<p:panelGrid columns="2" cellpadding="5">
-					<p:outputLabel for="cliente" value="Nome do Cliente:" />
-					<p:inputText id="cliente" size="20" />
+
+
+					<p:outputLabel for="loja" value="Loja:" />
+					<p:selectOneMenu id="loja">
+						<f:selectItem noSelectionOption="true"
+							itemLabel="Selecione um Loja" />
+						<f:selectItems />
+					</p:selectOneMenu>
+
+					<p:outputLabel for="vendedor" value="Nome do Vendedor:" />
+					<p:inputText id="vendedor" size="20" />
+
+
+					<p:outputLabel for="cpf" value="CPF:" />
+					<p:inputMask id="cpf" mask="999.999.999-99" size="10" />
+
+
+					<p:outputLabel for="sexo" value="Sexo:" />
+					<p:selectOneRadio id="sexo">
+						<f:selectItem itemValue="0" itemLabel="Masculino" />
+						<f:selectItem itemValue="1" itemLabel="Feminino" />
+					</p:selectOneRadio>
+
+
+					<p:outputLabel for="senha" value="Senha:" />
+					<p:password id="senha" maxlength="8" size="10">
+						<f:validateLength minimum="6" maximum="8" />
+					</p:password>
+
+
 				</p:panelGrid>
 
 				<p:panelGrid columns="2" cellpadding="5">
