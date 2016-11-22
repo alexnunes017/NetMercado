@@ -15,15 +15,15 @@
 	</f:metadata>
 	<ui:define name="conteudo">
 		<h:form id="formListagem">
-			<p:panel header="Tela de Produtos">
+			<p:panel header="Edição de Produtos">
 
 
 				<p:toolbar>
 					<p:toolbarGroup>
-						<p:button value="Novo" onclick="#"></p:button>
+
 						<p:commandButton value="Salvar"
 							actionListener="#{produtoBean.salvar()}" />
-
+						<p:button value="Voltar" outcome="produtoListagem"></p:button>
 					</p:toolbarGroup>
 
 				</p:toolbar>
@@ -59,7 +59,7 @@
 
 					<p:outputLabel for="tipo" value="Tipo:" />
 					<p:selectOneMenu id="tipo"
-						value="#{produtoBean.produto.tipoProduto}" >
+						value="#{produtoBean.produto.tipoProduto}">
 						<f:selectItem itemLabel="Original" itemValue="0" />
 						<f:selectItem itemLabel="Similar" itemValue="1" />
 					</p:selectOneMenu>

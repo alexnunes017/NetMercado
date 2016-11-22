@@ -28,14 +28,14 @@
 						Lista de Produtos
 						</f:facet>
 
-						<p:column headerText="codigo">
+						<p:column headerText="código">
 							<h:outputText value="#{produto.codigo}" />
 						</p:column>
-						<p:column headerText="descricao">
+						<p:column headerText="descrição">
 							<h:outputText value="#{produto.nomeProduto}" />
 						</p:column>
 
-						<p:column headerText="preco">
+						<p:column headerText="preço">
 							<h:outputText value="#{produto.precoProduto}" />
 						</p:column>
 
@@ -43,18 +43,18 @@
 							<h:outputText value="#{produto.tipoProduto}" />
 						</p:column>
 
-						<p:column headerText="estoque minimo">
+						<p:column headerText="estoque mínimo">
 							<h:outputText value="#{produto.estoqueMinimo}" />
 						</p:column>
 						<p:column headerText="estoque atual">
 							<h:outputText value="#{produto.estoqueAtual}" />
 						</p:column>
-						<p:column headerText="estoque maximo">
+						<p:column headerText="estoque máximo">
 							<h:outputText value="#{produto.estoqueMaximo}" />
 						</p:column>
 
-						<p:column headerText="opcoes">
-							<p:button icon="ui-icon-pencil" outcome="produto">
+						<p:column headerText="opções">
+							<p:button icon="ui-icon-pencil" outcome="produtoEdicao">
 								<f:param name="codigo" value="#{produto.codigo}">
 								</f:param>
 							</p:button>
