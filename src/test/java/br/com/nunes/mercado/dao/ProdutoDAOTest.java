@@ -16,7 +16,7 @@ public class ProdutoDAOTest {
 	public void salvar() {
 		Short s = new Short((short) 1);
 		BigDecimal decimal = new BigDecimal(12);
-		produto = new Produto("Suco de Laranja Integral", decimal, s, s, s, TipoProduto.ORIGINAL);
+		produto = new Produto("Suco de Uva Integral", decimal, s, s, s, TipoProduto.SIMILAR);
 		produtoDAO.salvar(produto);
 	}
 

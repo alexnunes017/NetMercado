@@ -29,16 +29,28 @@
 	<div id="cabecalho" class="divCabecalho">
 
 		<h:form id="formMenu">
-			<p:menubar>
-				<p:menuitem value="Loja" outcome="loja" styleClass="menufont" />
-				<p:menuitem value="Cliente" outcome="cliente" styleClass="menufont" />
-				<p:menuitem value="Vendedor" outcome="vendedor"
-					styleClass="menufont" />
-				<p:menuitem value="Produto" outcome="produto" styleClass="menufont" />
-				<p:menuitem value="Venda" outcome="venda" styleClass="menufont" />
+			<p:menubar styleClass="menufont">
+				<p:submenu label="Loja" styleClass="menufont">
+					<p:menuitem value="Loja" outcome="loja" styleClass="headerfont" />
+				</p:submenu>
+				<p:submenu label="Cliente" styleClass="menufont">
+					<p:menuitem value="Cliente" outcome="cliente"
+						styleClass="headerfont" />
+				</p:submenu>
+				<p:submenu label="Vendedor" styleClass="menufont">
+					<p:menuitem value="Vendedor" outcome="vendedor"
+						styleClass="headerfont" />
+				</p:submenu>
+				<p:submenu label="Produtos" styleClass="menufont">
+					<p:menuitem value="Cadastro de produto" outcome="produto"
+						styleClass="headerfont" />
+					<p:menuitem value="Pesquisa de Produto" outcome="produtoListagem"
+						styleClass="headerfont" />
+				</p:submenu>
+				<p:submenu label="Venda" styleClass="menufont">
+					<p:menuitem value="Venda" outcome="venda" styleClass="headerfont" />
+				</p:submenu>
 			</p:menubar>
-
-
 
 		</h:form>
 	</div>

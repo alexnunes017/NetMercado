@@ -20,6 +20,7 @@ public class ProdutoBean implements Serializable {
 
 	private Produto produto;
 	private ProdutoDAO produtoDAO;
+	private Long codigoProduto;
 
 	private List<Produto> produtos;
 
@@ -39,6 +40,22 @@ public class ProdutoBean implements Serializable {
 		this.produtos = produtos;
 	}
 
+	public ProdutoDAO getProdutoDAO() {
+		return produtoDAO;
+	}
+
+	public void setProdutoDAO(ProdutoDAO produtoDAO) {
+		this.produtoDAO = produtoDAO;
+	}
+
+	public Long getCodigoProduto() {
+		return codigoProduto;
+	}
+
+	public void setCodigoProduto(Long codigoProduto) {
+		this.codigoProduto = codigoProduto;
+	}
+
 	@PostConstruct
 	public void iniciar() {
 		produtoDAO = new ProdutoDAO();
@@ -46,14 +63,21 @@ public class ProdutoBean implements Serializable {
 
 	public void listar() {
 		try {
-			ProdutoDAO produtoDAO = new ProdutoDAO();
 			produtos = produtoDAO.listar();
 
 		} catch (RuntimeException e) {
 			Messages.addGlobalError("Ocorreu um erro Ao listar os Produtos");
 			e.printStackTrace();
 		}
+	}
 
+	public void editar() {
+		try {
+			produto = produtoDAO.buscar(codigoProduto);
+		} catch (RuntimeException e) {
+			Messages.addGlobalError("Ocorreu um erro Ao editar o Produto");
+			e.printStackTrace();
+		}
 	}
 
 }

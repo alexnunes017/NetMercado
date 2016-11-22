@@ -9,7 +9,8 @@
 	template="/templates/modelo.xhtml">
 
 	<f:metadata>
-		<f:viewAction action="#{produtoBean.listar}" />
+		<f:viewAction action="#{produtoBean.editar}" />
+		<f:viewParam name="codigo" value="#{produtoBean.codigoProduto}"></f:viewParam>
 
 	</f:metadata>
 	<ui:define name="conteudo">
@@ -29,33 +30,36 @@
 				<p:panelGrid columns="2" cellpadding="5"
 					columnClasses="rotulo,classes">
 					<p:outputLabel for="descricao" value="Descrição:" />
-					<p:inputText id="descricao" size="20" />
+					<p:inputText id="descricao" size="20"
+						value="#{produtoBean.produto.nomeProduto}" />
 
 					<p:outputLabel for="preco" value="Preço:" />
-					<p:inputText id="preco" maxlength="7" size="10" required="true">
+					<p:inputText id="preco" maxlength="7" size="10" required="true"
+						value="#{produtoBean.produto.precoProduto}">
 						<f:validateDoubleRange minimum="0.01" maximum="9999.99" />
 						<f:convertNumber locale="pt_BR" minFractionDigits="2" />
 					</p:inputText>
 					<p:outputLabel for="estoqueMinimo" value="Estoque Mínimo:" />
 					<p:inputText id="estoqueMinimo" maxlength="5" size="10"
-						required="true">
+						required="true" value="#{produtoBean.produto.estoqueMinimo}">
 						<f:validateLongRange minimum="0" maximum="1000" />
 					</p:inputText>
 
 					<p:outputLabel for="estoqueAtual" value="Estoque:" />
 					<p:inputText id="estoqueAtual" maxlength="5" size="10"
-						required="true">
+						required="true" value="#{produtoBean.produto.estoqueAtual}">
 						<f:validateLongRange minimum="0" maximum="1000" />
 					</p:inputText>
 
-					<p:outputLabel for="estoqueMaximo" value="Estoque Mínimo:" />
+					<p:outputLabel for="estoqueMaximo" value="Estoque Maximo:" />
 					<p:inputText id="estoqueMaximo" maxlength="5" size="10"
-						required="true">
+						required="true" value="#{produtoBean.produto.estoqueMaximo}">
 						<f:validateLongRange minimum="0" maximum="1000" />
 					</p:inputText>
 
 					<p:outputLabel for="tipo" value="Tipo:" />
-					<p:selectOneMenu id="tipo">
+					<p:selectOneMenu id="tipo"
+						value="#{produtoBean.produto.tipoProduto}" >
 						<f:selectItem itemLabel="Original" itemValue="0" />
 						<f:selectItem itemLabel="Similar" itemValue="1" />
 					</p:selectOneMenu>
@@ -64,47 +68,6 @@
 
 				</p:panelGrid>
 
-
-				<p:panelGrid columns="2" cellpadding="5">
-
-
-
-					<p:dataTable id="tabela" reflow="true" rows="5" paginator="true"
-						paginatorPosition="top" emptyMessage="Nenhum Dado Existente"
-						value="#{produtoBean.produtos}" var="produto" styleClass="tabela">
-						<f:facet name="header">
-						Lista de Produtos
-						</f:facet>
-
-						<p:column>
-							<h:outputText value="#{produto.codigo}" />
-						</p:column>
-						<p:column>
-							<h:outputText value="#{produto.nomeProduto}" />
-						</p:column>
-
-						<p:column>
-							<h:outputText value="#{produto.precoProduto}" />
-						</p:column>
-
-						<p:column>
-							<h:outputText value="#{produto.tipoProduto}" />
-						</p:column>
-
-						<p:column>
-							<h:outputText value="#{produto.estoqueMinimo}" />
-						</p:column>
-						<p:column>
-							<h:outputText value="#{produto.estoqueAtual}" />
-						</p:column>
-						<p:column>
-							<h:outputText value="#{produto.estoqueMaximo}" />
-						</p:column>
-
-
-					</p:dataTable>
-
-				</p:panelGrid>
 			</p:panel>
 		</h:form>
 	</ui:define>
