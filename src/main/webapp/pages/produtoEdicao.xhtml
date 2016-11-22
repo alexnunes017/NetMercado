@@ -22,7 +22,7 @@
 					<p:toolbarGroup>
 
 						<p:commandButton value="Salvar"
-							actionListener="#{produtoBean.salvar()}" />
+							actionListener="#{produtoBean.salvar}" />
 						<p:button value="Voltar" outcome="produtoListagem"></p:button>
 					</p:toolbarGroup>
 
@@ -60,11 +60,13 @@
 
 					<p:outputLabel for="tipo" value="Tipo:" />
 					<p:selectOneMenu id="tipo"
-						value="#{produtoBean.produto.tipoProduto}"
-						converter="omnifaces.SelectItemsConverter" required="true">
-						<f:selectItems value="#{produtoBean.}" var="estado"
-							itemValue="#{produto.tipo}" itemLabel="#{produto.tipo}" />
+						value="#{produtoBean.produto.tipoProduto}">
+						<f:selectItem itemLabel="Selecione um Tipo" itemDisabled="true" />
+						<f:selectItems value="#{produtoBean.tiposProdutos}" var="tipos"
+							itemValue="#{tipos}" itemLabel="#{tipos.label}" />
 					</p:selectOneMenu>
+
+
 
 
 				</p:panelGrid>

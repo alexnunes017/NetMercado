@@ -9,12 +9,12 @@
 	template="/templates/modelo.xhtml">
 
 	<f:metadata>
-		<f:viewAction action="#{produtoBean.editar}" />
+		<f:viewAction action="#{produtoBean.novo}" />
 		<f:viewParam name="codigo" value="#{produtoBean.codigoProduto}"></f:viewParam>
 
 	</f:metadata>
 	<ui:define name="conteudo">
-		<h:form id="formListagem">
+		<h:form id="formCadastro">
 			<p:panel header="Edição de Produtos">
 
 
@@ -22,13 +22,14 @@
 					<p:toolbarGroup>
 
 						<p:commandButton value="Salvar"
-							actionListener="#{produtoBean.salvar()}" />
+							actionListener="#{produtoBean.salvar}"
+							update=":mensagem :formCadastro:painel" />
 						<p:button value="Voltar" outcome="produtoListagem"></p:button>
 					</p:toolbarGroup>
 
 				</p:toolbar>
 				<p:panelGrid columns="2" cellpadding="5"
-					columnClasses="rotulo,classes">
+					columnClasses="rotulo,classes" id="painel">
 					<p:outputLabel for="descricao" value="Descrição:" />
 					<p:inputText id="descricao" size="20"
 						value="#{produtoBean.produto.nomeProduto}" />
@@ -59,10 +60,10 @@
 
 					<p:outputLabel for="tipo" value="Tipo:" />
 					<p:selectOneMenu id="tipo"
-						value="#{produtoBean.produto.tipoProduto}"
-						converter="omnifaces.SelectItemsConverter" required="true">
-						<f:selectItems value="#{produto.tipo}" var="estado"
-							itemValue="#{produto.tipo}" itemLabel="#{produto.tipo}" />
+						value="#{produtoBean.produto.tipoProduto}">
+						<f:selectItem itemLabel="Selecione um Tipo" itemDisabled="true" />
+						<f:selectItems value="#{produtoBean.tiposProdutos}" var="tipos"
+							itemValue="#{tipos}" itemLabel="#{tipos.label}" />
 					</p:selectOneMenu>
 
 

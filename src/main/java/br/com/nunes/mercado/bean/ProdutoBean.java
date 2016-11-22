@@ -11,6 +11,7 @@ import org.omnifaces.util.Messages;
 
 import br.com.nunes.mercado.dao.ProdutoDAO;
 import br.com.nunes.mercado.domain.Produto;
+import br.com.nunes.mercado.domain.enums.TipoProduto;
 
 @ManagedBean
 @ViewScoped
@@ -56,9 +57,29 @@ public class ProdutoBean implements Serializable {
 		this.codigoProduto = codigoProduto;
 	}
 
+	public TipoProduto[] getTiposProdutos() {
+		return TipoProduto.values();
+	}
+
 	@PostConstruct
 	public void iniciar() {
 		produtoDAO = new ProdutoDAO();
+	}
+
+	public void novo() {
+		produto = new Produto();
+	}
+
+	public void salvar() {
+		try {
+			produtoDAO.salvar(produto);
+			Messages.addGlobalInfo("Produto Salvo!");
+			novo();
+
+		} catch (Exception e) {
+			Messages.addGlobalError("Ocorreu um erro Ao salvar o Produto");
+			e.printStackTrace();
+		}
 	}
 
 	public void listar() {
