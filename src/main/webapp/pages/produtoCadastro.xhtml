@@ -57,12 +57,11 @@
 						<f:validateLongRange minimum="0" maximum="1000" />
 					</p:inputText>
 
-
 					<p:outputLabel for="tipo" value="Tipo:" />
 					<p:selectOneMenu id="tipo"
 						value="#{produtoBean.produto.tipoProduto}"
 						converter="omnifaces.SelectItemsConverter" required="true">
-						<f:selectItems value="#{produtoBean.}" var="estado"
+						<f:selectItems value="#{produto.tipo}" var="estado"
 							itemValue="#{produto.tipo}" itemLabel="#{produto.tipo}" />
 					</p:selectOneMenu>
 
