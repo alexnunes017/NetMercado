@@ -11,23 +11,10 @@
 	<f:metadata>
 		<f:viewAction action="#{produtoBean.novo}" />
 		<f:viewParam name="codigo" value="#{produtoBean.codigoProduto}"></f:viewParam>
-
 	</f:metadata>
 	<ui:define name="conteudo">
 		<h:form id="formCadastro">
-			<p:panel header="Edição de Produtos">
-
-
-				<p:toolbar>
-					<p:toolbarGroup>
-
-						<p:commandButton value="Salvar"
-							actionListener="#{produtoBean.salvar}"
-							update=":mensagem :formCadastro:painel" />
-						<p:button value="Voltar" outcome="produtoListagem"></p:button>
-					</p:toolbarGroup>
-
-				</p:toolbar>
+			<p:panel header="Cadastro de Produtos">
 				<p:panelGrid columns="2" cellpadding="5"
 					columnClasses="rotulo,classes" id="painel">
 					<p:outputLabel for="descricao" value="Descrição:" />
@@ -65,9 +52,16 @@
 						<f:selectItems value="#{produtoBean.tiposProdutos}" var="tipos"
 							itemValue="#{tipos}" itemLabel="#{tipos.label}" />
 					</p:selectOneMenu>
-
-
 				</p:panelGrid>
+				<p:toolbar>
+					<p:toolbarGroup>
+
+						<p:commandButton value="Salvar"
+							actionListener="#{produtoBean.salvar}"
+							update=":mensagem :formCadastro:painel" />
+						<p:button value="Voltar" outcome="produtoListagem"></p:button>
+					</p:toolbarGroup>
+				</p:toolbar>
 
 			</p:panel>
 		</h:form>

@@ -9,55 +9,38 @@
 	template="/templates/modelo.xhtml">
 
 	<f:metadata>
-		<f:viewAction action="#{produtoBean.listar}" />
-		<f:viewParam name="codigo" value="#{produtoBean.codigoProduto}"></f:viewParam>
+		<f:viewAction action="#{clienteBean.listar}" />
+		<f:viewParam name="codigo" value="#{clienteBean.codigoCliente}"></f:viewParam>
 
 	</f:metadata>
 	<ui:define name="conteudo">
 		<h:form id="formListagem">
-			<p:panel header="Listagem de Produtos">
+			<p:panel header="Listagem de Clientes">
 				<p:toolbar>
 					<p:toolbarGroup align="right">
-						<p:button value="Novo" outcome="produtoCadastro"
+						<p:button value="Novo" outcome="clienteCadastro"
 							icon="ui-icon-plus	"></p:button>
 					</p:toolbarGroup>
 				</p:toolbar>
 				<p:panelGrid columns="2" cellpadding="5">
 					<p:dataTable id="tabela" reflow="true" rows="5" paginator="true"
 						paginatorPosition="top" emptyMessage="Nenhum Dado Existente"
-						value="#{produtoBean.produtos}" var="produto" styleClass="tabela">
+						value="#{clienteBean.clientes}" var="cliente" styleClass="tabela">
 						<f:facet name="header">
-						Lista de Produtos
+						Lista de Clientes
 						</f:facet>
 
 						<p:column headerText="código">
-							<h:outputText value="#{produto.codigo}" />
+							<h:outputText value="#{cliente.codigo}" />
 						</p:column>
-						<p:column headerText="descrição">
-							<h:outputText value="#{produto.nomeProduto}" />
-						</p:column>
-
-						<p:column headerText="preço">
-							<h:outputText value="#{produto.precoProduto}" />
+						<p:column headerText="nomde do cliente">
+							<h:outputText value="#{cliente.nomeCliente}" />
 						</p:column>
 
-						<p:column headerText="tipo">
-							<h:outputText value="#{produto.tipoProduto}" />
-						</p:column>
-
-						<p:column headerText="estoque mínimo">
-							<h:outputText value="#{produto.estoqueMinimo}" />
-						</p:column>
-						<p:column headerText="estoque atual">
-							<h:outputText value="#{produto.estoqueAtual}" />
-						</p:column>
-						<p:column headerText="estoque máximo">
-							<h:outputText value="#{produto.estoqueMaximo}" />
-						</p:column>
 
 						<p:column headerText="opções">
-							<p:button icon="ui-icon-pencil" outcome="produtoEdicao">
-								<f:param name="codigo" value="#{produto.codigo}">
+							<p:button icon="ui-icon-pencil" outcome="clienteEdicao">
+								<f:param name="codigo" value="#{cliente.codigo}">
 								</f:param>
 							</p:button>
 							<p:commandButton icon="ui-icon-close" />

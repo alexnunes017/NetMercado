@@ -15,7 +15,7 @@ import br.com.nunes.mercado.domain.enums.TipoProduto;
 
 @ManagedBean
 @ViewScoped
-public class ProdutoBean implements Serializable {
+public class VendedorBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
