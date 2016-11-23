@@ -22,6 +22,7 @@ public class ClienteBean implements Serializable {
 	private Cliente cliente;
 	private ClienteDAO clienteDAO;
 	private Long codigoCliente;
+	private Cliente clienteSelecionado;
 
 	private List<Cliente> clientes;
 
@@ -55,6 +56,14 @@ public class ClienteBean implements Serializable {
 
 	public void setCodigoCliente(Long codigoProduto) {
 		this.codigoCliente = codigoProduto;
+	}
+
+	public Cliente getClienteSelecionado() {
+		return clienteSelecionado;
+	}
+
+	public void setClienteSelecionado(Cliente clienteSelecionado) {
+		this.clienteSelecionado = clienteSelecionado;
 	}
 
 	public TipoProduto[] getTiposProdutos() {
@@ -107,8 +116,22 @@ public class ClienteBean implements Serializable {
 	public void editar() {
 		try {
 			cliente = clienteDAO.buscar(codigoCliente);
+
+			Messages.addGlobalInfo("Cliente Ediado!");
+
 		} catch (RuntimeException e) {
 			Messages.addGlobalError("Ocorreu um erro Ao editar o Cliente");
+			e.printStackTrace();
+		}
+	}
+
+	public void excluir() {
+		try {
+			clienteDAO.excluir(clienteSelecionado);
+			listar();
+			Messages.addGlobalInfo("Cliente Excluido!");
+		} catch (RuntimeException e) {
+			Messages.addGlobalError("Ocorreu um erro Ao excluir o Cliente");
 			e.printStackTrace();
 		}
 	}
