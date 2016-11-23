@@ -9,57 +9,51 @@
 	template="/templates/modelo.xhtml">
 
 	<f:metadata>
-		<f:viewAction action="#{clienteBean.editar}" />
-		<f:viewParam name="codigo" value="#{clienteBean.codigoCliente}"></f:viewParam>
+		<f:viewAction action="#{vendedorBean.editar}" />
+		<f:viewParam name="codigo" value="#{vendedorBean.codigoVendedor}"></f:viewParam>
 	</f:metadata>
 	<ui:define name="conteudo">
 		<h:form id="formEditar">
-			<p:panel header="Edição de Clientes" id="painel">
+			<p:panel header="Edição de Vendedores">
 				<p:panelGrid columns="2" cellpadding="5"
-					columnClasses="rotulo,classes">
-					<p:outputLabel for="descricao" value="Descrição:" />
-					<p:inputText id="descricao" size="20"
-						value="#{clienteBean.Cliente.nomeCliente}" />
+					columnClasses="rotulo,classes" id="painel">
 
-					<p:outputLabel for="preco" value="Preço:" />
-					<p:inputText id="preco" maxlength="7" size="10" required="true"
-						value="#{clienteBean.Cliente.precoCliente}">
-						<f:validateDoubleRange minimum="0.01" maximum="9999.99" />
-						<f:convertNumber locale="pt_BR" minFractionDigits="2" />
-					</p:inputText>
-					<p:outputLabel for="estoqueMinimo" value="Estoque Mínimo:" />
-					<p:inputText id="estoqueMinimo" maxlength="5" size="10"
-						required="true" value="#{clienteBean.Cliente.estoqueMinimo}">
-						<f:validateLongRange minimum="0" maximum="1000" />
-					</p:inputText>
-
-					<p:outputLabel for="estoqueAtual" value="Estoque:" />
-					<p:inputText id="estoqueAtual" maxlength="5" size="10"
-						required="true" value="#{clienteBean.Cliente.estoqueAtual}">
-						<f:validateLongRange minimum="0" maximum="1000" />
-					</p:inputText>
-
-					<p:outputLabel for="estoqueMaximo" value="Estoque Maximo:" />
-					<p:inputText id="estoqueMaximo" maxlength="5" size="10"
-						required="true" value="#{clienteBean.Cliente.estoqueMaximo}">
-						<f:validateLongRange minimum="0" maximum="1000" />
-					</p:inputText>
+					<p:outputLabel for="loja" value="Paciente:" />
+					<p:selectOneMenu id="loja" filter="true"
+						value="#{vendedorBean.vendedor.loja}" required="true"
+						converter="omnifaces.SelectItemsConverter">
+						<f:selectItem noSelectionOption="true"
+							itemLabel="Selecione uma loja" />
+						<f:selectItems value="#{vendedorBean.lojas}" var="loja"
+							itemValue="#{loja}" itemLabel="#{loja.nomeLoja}" />
+					</p:selectOneMenu>
 
 
-					<p:outputLabel for="tipo" value="Tipo:" />
-					<p:selectOneMenu id="tipo"
-						value="#{clienteBean.Cliente.tipoCliente}">
-						<f:selectItem itemLabel="Selecione um Tipo" itemDisabled="true" />
-						<f:selectItems value="#{clienteBean.tiposClientes}" var="tipos"
+					<p:outputLabel for="nome" value="Nome do Vendedor:" />
+					<p:inputText id="nome" size="20"
+						value="#{vendedorBean.vendedor.nomeVendedor}" />
+
+					<p:outputLabel for="cpf" value="CPF:" />
+					<p:inputMask id="cpf" mask="999.999.999-99"
+						value="#{vendedorBean.vendedor.cpfVendedor}" />
+
+					<p:outputLabel for="sexo" value="Sexo:" />
+					<p:selectOneMenu id="sexo" value="#{vendedorBean.vendedor.sexo}">
+						<f:selectItem itemLabel="Selecione o Sexo" itemDisabled="true" />
+						<f:selectItems value="#{vendedorBean.sexos}" var="tipos"
 							itemValue="#{tipos}" itemLabel="#{tipos.label}" />
 					</p:selectOneMenu>
+
+					<p:outputLabel for="senha" value="Senha:" />
+					<p:password id="senha" size="20"
+						value="#{vendedorBean.vendedor.senha}" />
 				</p:panelGrid>
 				<p:toolbar>
 					<p:toolbarGroup>
 						<p:commandButton value="Salvar"
-							actionListener="#{clienteBean.merge}"
+							actionListener="#{vendedorBean.merge}"
 							update=":mensagem :formEditar:painel" />
-						<p:button value="Voltar" outcome="ClienteListagem"></p:button>
+						<p:button value="Voltar" outcome="vendedorListagem"></p:button>
 					</p:toolbarGroup>
 				</p:toolbar>
 			</p:panel>

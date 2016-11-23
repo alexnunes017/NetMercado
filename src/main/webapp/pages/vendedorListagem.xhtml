@@ -9,39 +9,50 @@
 	template="/templates/modelo.xhtml">
 
 	<f:metadata>
-		<f:viewAction action="#{clienteBean.listar}" />
-		<f:viewParam name="codigo" value="#{clienteBean.codigoCliente}"></f:viewParam>
+		<f:viewAction action="#{vendedorBean.listar}" />
+		<f:viewParam name="codigo" value="#{vendedorBean.codigoVendedor}"></f:viewParam>
 
 	</f:metadata>
 	<ui:define name="conteudo">
 		<h:form id="formListagem">
-			<p:panel header="Listagem de Clientes">
+			<p:panel header="Listagem de Vendedores">
 				<p:toolbar>
 					<p:toolbarGroup align="right">
-						<p:button value="Novo" outcome="clienteCadastro"
+						<p:button value="Novo" outcome="vendedorCadastro"
 							icon="ui-icon-plus	"></p:button>
 					</p:toolbarGroup>
 				</p:toolbar>
 				<p:panelGrid columns="2" cellpadding="5">
 					<p:dataTable id="tabela" reflow="true" rows="5" paginator="true"
 						paginatorPosition="top" emptyMessage="Nenhum Dado Existente"
-						value="#{clienteBean.clientes}" var="Cliente" styleClass="tabela">
+						value="#{vendedorBean.vendedores}" var="vendedor"
+						styleClass="tabela">
 						<f:facet name="header">
-						Lista de Clientes
+						Lista de Vendedores
 						</f:facet>
 
 						<p:column headerText="código">
-							<h:outputText value="#{cliente.codigo}" />
+							<h:outputText value="#{vendedor.codigo}" />
 						</p:column>
-						<p:column headerText="descrição">
-							<h:outputText value="#{cliente.nomeCliente}" />
+						<p:column headerText="nome vendedor">
+							<h:outputText value="#{vendedor.nomeVendedor}" />
 						</p:column>
 
+						<p:column headerText="CPF">
+							<h:outputText value="#{vendedor.cpfVendedor}" />
+						</p:column>
 
+						<p:column headerText="sexo">
+							<h:outputText value="#{vendedor.sexo}" />
+						</p:column>
+
+						<p:column headerText="loja">
+							<h:outputText value="#{vendedor.loja.nomeLoja}" />
+						</p:column>
 
 						<p:column headerText="opções">
-							<p:button icon="ui-icon-pencil" outcome="clienteEdicao">
-								<f:param name="codigo" value="#{cliente.codigo}">
+							<p:button icon="ui-icon-pencil" outcome="vendedorEdicao">
+								<f:param name="codigo" value="#{vendedor.codigo}">
 								</f:param>
 							</p:button>
 							<p:commandButton icon="ui-icon-close" />

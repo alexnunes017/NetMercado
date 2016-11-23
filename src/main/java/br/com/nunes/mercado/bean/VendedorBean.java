@@ -9,9 +9,11 @@ import javax.faces.bean.ViewScoped;
 
 import org.omnifaces.util.Messages;
 
-import br.com.nunes.mercado.dao.ProdutoDAO;
-import br.com.nunes.mercado.domain.Produto;
-import br.com.nunes.mercado.domain.enums.TipoProduto;
+import br.com.nunes.mercado.dao.LojaDAO;
+import br.com.nunes.mercado.dao.VendedorDAO;
+import br.com.nunes.mercado.domain.Loja;
+import br.com.nunes.mercado.domain.Vendedor;
+import br.com.nunes.mercado.domain.enums.Sexo;
 
 @ManagedBean
 @ViewScoped
@@ -19,96 +21,126 @@ public class VendedorBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private Produto produto;
-	private ProdutoDAO produtoDAO;
-	private Long codigoProduto;
+	private Vendedor vendedor;
+	private Loja loja;
+	private VendedorDAO vendedorDAO;
+	private LojaDAO lojaDAO;
+	private Long codigoVendedor;
 
-	private List<Produto> produtos;
+	private List<Vendedor> vendedores;
+	private List<Loja> lojas;
 
-	public Produto getProduto() {
-		return produto;
+	public Vendedor getVendedor() {
+		return vendedor;
 	}
 
-	public void setProduto(Produto produto) {
-		this.produto = produto;
+	public void setVendedor(Vendedor vendedor) {
+		this.vendedor = vendedor;
 	}
 
-	public List<Produto> getProdutos() {
-		return produtos;
+	public VendedorDAO getVendedorDAO() {
+		return vendedorDAO;
 	}
 
-	public void setProdutos(List<Produto> produtos) {
-		this.produtos = produtos;
+	public void setVendedorDAO(VendedorDAO vendedorDAO) {
+		this.vendedorDAO = vendedorDAO;
 	}
 
-	public ProdutoDAO getProdutoDAO() {
-		return produtoDAO;
+	public Long getCodigoVendedor() {
+		return codigoVendedor;
 	}
 
-	public void setProdutoDAO(ProdutoDAO produtoDAO) {
-		this.produtoDAO = produtoDAO;
+	public void setCodigoVendedor(Long codigoVendedor) {
+		this.codigoVendedor = codigoVendedor;
 	}
 
-	public Long getCodigoProduto() {
-		return codigoProduto;
+	public List<Vendedor> getVendedores() {
+		return vendedores;
 	}
 
-	public void setCodigoProduto(Long codigoProduto) {
-		this.codigoProduto = codigoProduto;
+	public void setVendedores(List<Vendedor> vendedores) {
+		this.vendedores = vendedores;
 	}
 
-	public TipoProduto[] getTiposProdutos() {
-		return TipoProduto.values();
+	public Loja getLoja() {
+		return loja;
+	}
+
+	public void setLoja(Loja loja) {
+		this.loja = loja;
+	}
+
+	public LojaDAO getLojaDAO() {
+		return lojaDAO;
+	}
+
+	public void setLojaDAO(LojaDAO lojaDAO) {
+		this.lojaDAO = lojaDAO;
+	}
+
+	public List<Loja> getLojas() {
+		return lojas;
+	}
+
+	public void setLojas(List<Loja> lojas) {
+		this.lojas = lojas;
+	}
+
+	public Sexo[] getSexos() {
+		return Sexo.values();
 	}
 
 	@PostConstruct
 	public void iniciar() {
-		produtoDAO = new ProdutoDAO();
+		vendedorDAO = new VendedorDAO();
+		lojaDAO = new LojaDAO();
+		lojas = lojaDAO.listar();
 	}
 
 	public void novo() {
-		produto = new Produto();
+		vendedor = new Vendedor();
+
 	}
 
 	public void salvar() {
 		try {
-			produtoDAO.salvar(produto);
-			Messages.addGlobalInfo("Produto Salvo!");
+			vendedorDAO.salvar(vendedor);
+			Messages.addGlobalInfo("Vendedor Salvo!");
 			novo();
 
 		} catch (Exception e) {
-			Messages.addGlobalError("Ocorreu um erro Ao salvar o Produto");
+			Messages.addGlobalError("Ocorreu um erro Ao salvar o Vendedor");
 			e.printStackTrace();
 		}
 	}
 
 	public void merge() {
 		try {
-			produtoDAO.merge(produto);
+			vendedorDAO.merge(vendedor);
 			Messages.addGlobalInfo("Produto Editado!");
 			novo();
 
 		} catch (Exception e) {
-			Messages.addGlobalError("Ocorreu um erro Ao salvar o Produto");
+			Messages.addGlobalError("Ocorreu um erro Ao salvar o Vendedor");
 			e.printStackTrace();
 		}
 	}
 
 	public void listar() {
 		try {
-			produtos = produtoDAO.listar();
+			vendedores = vendedorDAO.listar();
 
 		} catch (RuntimeException e) {
-			Messages.addGlobalError("Ocorreu um erro Ao listar os Produtos");
+			Messages.addGlobalError("Ocorreu um erro Ao listar os Vendedores");
 			e.printStackTrace();
 		}
 	}
 
 	public void editar() {
 		try {
-			produto = produtoDAO.buscar(codigoProduto);
+			vendedor = vendedorDAO.buscar(codigoVendedor);
 		} catch (RuntimeException e) {
-			Messages.addGlobalError("Ocorreu um erro Ao editar o Produto");
+			Messages.addGlobalError("Ocorreu um erro Ao editar o Vendedor");
 			e.printStackTrace();
 		}
 	}

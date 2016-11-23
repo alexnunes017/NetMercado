@@ -19,7 +19,7 @@ public class Vendedor extends GenericDomain {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Column(length = 14, nullable = false, unique = true)
+	@Column(length = 30, nullable = false, unique = true)
 	private String nomeVendedor;
 
 	@Column(length = 14, nullable = false, unique = true)
@@ -38,8 +38,6 @@ public class Vendedor extends GenericDomain {
 	@JoinColumn(nullable = false)
 	private Loja loja;
 
-	
-	
 	public Vendedor() {
 		super();
 	}
