@@ -21,6 +21,7 @@ public class LojaBean implements Serializable {
 	private Loja loja;
 	private LojaDAO lojaDAO;
 	private Long codigoLoja;
+	private Loja lojaSelecionada;
 
 	private List<Loja> lojas;
 
@@ -54,6 +55,14 @@ public class LojaBean implements Serializable {
 
 	public void setLojas(List<Loja> lojas) {
 		this.lojas = lojas;
+	}
+
+	public Loja getLojaSelecionada() {
+		return lojaSelecionada;
+	}
+
+	public void setLojaSelecionada(Loja lojaSelecionada) {
+		this.lojaSelecionada = lojaSelecionada;
 	}
 
 	@PostConstruct
@@ -104,6 +113,17 @@ public class LojaBean implements Serializable {
 			loja = lojaDAO.buscar(codigoLoja);
 		} catch (RuntimeException e) {
 			Messages.addGlobalError("Ocorreu um erro Ao editar o Loja");
+			e.printStackTrace();
+		}
+	}
+
+	public void excluir() {
+		try {
+			lojaDAO.excluir(lojaSelecionada);
+			listar();
+			Messages.addGlobalInfo("Cliente Excluido!");
+		} catch (RuntimeException e) {
+			Messages.addGlobalError("Ocorreu um erro Ao excluir o Cliente");
 			e.printStackTrace();
 		}
 	}

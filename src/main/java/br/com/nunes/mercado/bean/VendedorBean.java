@@ -26,6 +26,7 @@ public class VendedorBean implements Serializable {
 	private VendedorDAO vendedorDAO;
 	private LojaDAO lojaDAO;
 	private Long codigoVendedor;
+	private Vendedor vendedorSelecionado;
 
 	private List<Vendedor> vendedores;
 	private List<Loja> lojas;
@@ -90,6 +91,14 @@ public class VendedorBean implements Serializable {
 		return Sexo.values();
 	}
 
+	public Vendedor getVendedorSelecionado() {
+		return vendedorSelecionado;
+	}
+
+	public void setVendedorSelecionado(Vendedor vendedorSelecionado) {
+		this.vendedorSelecionado = vendedorSelecionado;
+	}
+
 	@PostConstruct
 	public void iniciar() {
 		vendedorDAO = new VendedorDAO();
@@ -141,6 +150,17 @@ public class VendedorBean implements Serializable {
 			vendedor = vendedorDAO.buscar(codigoVendedor);
 		} catch (RuntimeException e) {
 			Messages.addGlobalError("Ocorreu um erro Ao editar o Vendedor");
+			e.printStackTrace();
+		}
+	}
+
+	public void excluir() {
+		try {
+			vendedorDAO.excluir(vendedorSelecionado);
+			listar();
+			Messages.addGlobalInfo("Cliente Excluido!");
+		} catch (RuntimeException e) {
+			Messages.addGlobalError("Ocorreu um erro Ao excluir o Cliente");
 			e.printStackTrace();
 		}
 	}

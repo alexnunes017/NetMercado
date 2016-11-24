@@ -60,10 +60,25 @@
 								<f:param name="codigo" value="#{produto.codigo}">
 								</f:param>
 							</p:button>
-							<p:commandButton icon="ui-icon-close" />
+							<p:commandButton icon="ui-icon-trash"
+								update=":mensagem :formListagem:tabela"
+								action="#{produtoBean.excluir}">
+								<p:confirm header="Confirmação"
+									message="Deseja excluir o produto ?" icon="ui-icon-alert" />
+								<f:setPropertyActionListener
+									target="#{produtoBean.produtoSelecionado}" value="#{produto}" />
+							</p:commandButton>
 						</p:column>
 
 					</p:dataTable>
+					<p:confirmDialog global="true">
+						<p:commandButton value="Sim" type="button"
+							styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+						<p:commandButton value="
+							Não" type="button"
+							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+
+					</p:confirmDialog>
 
 				</p:panelGrid>
 			</p:panel>
